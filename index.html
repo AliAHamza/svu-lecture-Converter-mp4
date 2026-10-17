@@ -88,6 +88,16 @@ button:focus-visible,.icon-btn:focus-visible{outline:3px solid var(--focus);outl
 .contact a{display:grid;place-items:center;inline-size:48px;block-size:48px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold-text);background:var(--surface);transition:background .15s,color .15s,transform .15s}
 .contact a:hover,.contact a:focus-visible{background:var(--gold);color:#112A20;transform:translateY(-2px);outline:none}
 .contact svg{inline-size:24px;block-size:24px}
+.top{position:relative}
+.tools{display:flex;gap:10px;flex:none}
+.infoPanel{position:absolute;z-index:20;inset-block-start:calc(100% + 10px);inset-inline-end:max(16px,env(safe-area-inset-left,0px));inline-size:min(calc(100vw - 32px),420px);
+  background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:6px 16px;box-shadow:0 12px 32px rgba(0,0,0,.28)}
+.infoPanel[hidden]{display:none}
+.infoPanel ul{list-style:none;margin:0;padding:0}
+.infoPanel li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;font-size:.95em;line-height:1.7}
+.infoPanel li+li{border-top:1px solid var(--line)}
+.infoPanel svg{flex:none;inline-size:22px;block-size:22px;margin-block-start:3px;color:var(--gold-text)}
+#info[aria-expanded="true"]{background:rgba(201,162,75,.28)}
 </style>
 
 <header class="top">
@@ -95,10 +105,23 @@ button:focus-visible,.icon-btn:focus-visible{outline:3px solid var(--focus);outl
     <div class="brand">
       <h1>محوّل محاضرات الجامعة الافتراضية السورية إلى MP4</h1>
     </div>
+    <div class="tools">
+    <button class="icon-btn" id="info" type="button" aria-label="معلومات" aria-expanded="false" aria-controls="infoPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v5.5"/><path d="M12 7.6v.1"/></svg>
+    </button>
     <button class="icon-btn" id="theme" type="button" aria-label="تبديل المظهر الفاتح والداكن">
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
     </button>
+    </div>
+  </div>
+  <div class="infoPanel" id="infoPanel" role="dialog" aria-label="معلومات" hidden>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>صوت محسّن تلقائياً: تقليل الضجيج ورفع وضوح الكلام وتوازن مستوى الصوت.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-8 8"/></svg><span>صورة كبيرة وبجودة عالية، بحيث تبقى الكتابة مقروءة.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M9.5 2.8h5"/></svg><span>الصورة والصوت متزامنان كما في التسجيل الأصلي.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9a15 15 0 0 1 19 0"/><path d="M5.5 12.5a10.5 10.5 0 0 1 13 0"/><path d="M8.7 16a6 6 0 0 1 6.6 0"/><path d="M12 19.5v.1"/></svg><span>حجم الصفحة صغير جداً، ولا يستهلك من الإنترنت إلا الصفحة نفسها، أما المحاضرة فلا تُحمَّل من أي مكان.</span></li>
+    </ul>
   </div>
 </header>
 
@@ -143,7 +166,7 @@ button:focus-visible,.icon-btn:focus-visible{outline:3px solid var(--focus);outl
   </div>
 </main>
 <footer class="contact">
-  <p>للملاحظات والاستفسارات</p>
+  <p>للملاحظات والاستفسارات تواصل معي</p>
   <div class="links">
     <a href="https://wa.me/963939412249" target="_blank" rel="noopener" aria-label="واتساب" title="واتساب">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.2A9.5 9.5 0 1 0 12 2.5z"/><path transform="translate(6.6 6.6) scale(.46)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -221,7 +244,7 @@ async function denoise(x,len,strength,onP){
     // inverse FFT via conjugation
     for(let i=0;i<N;i++)im[i]=-im[i];fft(re,im);
     for(let i=0;i<N;i++)out[o+i]+=re[i]/N*win[i]/2;
-    if(f%1500===0){if(onP)onP(f/nF);await yieldNow();}
+    if(f%1500===0){if(onP)onP(f/nF);await yieldNow();if(cancelled)throw CANCELLED;}
   }
   // keep the untouched tail and write back
   for(let i=0;i<len;i++)x[i]=(i<(nF-1)*H+N)?out[i]:x[i];
@@ -523,8 +546,16 @@ return {Decoder};
 /* timers are throttled hard once the tab is in the background, so short pauses go through a message channel instead */
 const _mc=new MessageChannel(),_q=[];_mc.port1.onmessage=()=>{const f=_q.shift();if(f)f();};
 const yieldNow=()=>new Promise(r=>{_q.push(r);_mc.port2.postMessage(0);});
+/* info panel */
+(function(){
+  const b=document.getElementById('info'),p=document.getElementById('infoPanel');
+  const set=o=>{p.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');};
+  b.addEventListener('click',e=>{e.stopPropagation();set(p.hidden);});
+  document.addEventListener('click',e=>{if(!p.hidden&&!p.contains(e.target))set(false);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!p.hidden){set(false);b.focus();}});
+})();
 const sleep=ms=>ms>40?new Promise(r=>setTimeout(r,ms)):yieldNow();
-const drain=(enc,max)=>enc.encodeQueueSize>max?new Promise(r=>{const f=()=>{if(enc.encodeQueueSize<=max){enc.removeEventListener('dequeue',f);r();}};enc.addEventListener('dequeue',f);}):null;
+const drain=(enc,max)=>enc.encodeQueueSize>max?Promise.race([new Promise(r=>{const f=()=>{if(enc.encodeQueueSize<=max){enc.removeEventListener('dequeue',f);r();}};enc.addEventListener('dequeue',f);}),cancelP||new Promise(()=>{})]):null;
 const fmtTime=ms=>{const s=Math.round(ms/1000);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;
   return (h?h+':':'')+String(m).padStart(h?2:1,'0')+':'+String(x).padStart(2,'0')};
 const fmtSize=b=>b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB';
@@ -674,6 +705,7 @@ function applyUpdate(fb,W,H,u){
 
 /* ---------- state & preview ---------- */
 let P=null, fileName='recording', outBlob=null, cancelled=false, busy=false, previewFb=null, enhCache=null;
+let cancelP=null,cancelNow=null,aborters=[];const CANCELLED=new Error('cancelled');
 const BASE_TITLE=document.title;
 const view=$('view'), vctx=view.getContext('2d');
 function newFb(W,H,bpp){if(bpp>8){const f=new Uint32Array(W*H);f.fill(0xFF000000);return f;}return new Uint8Array(W*H);}
@@ -716,10 +748,12 @@ function resetCounters(){
 const DROP_DEFAULT=$('dropText').textContent;
 function releaseFile(){forceSoft=false;P=null;previewFb=null;enhCache=null;}
 
+/* a recording is named with the date and the exact time; the time of day (hours, minutes, seconds) is dropped and the date kept */
+function cleanName(n){return n.replace(/((?:19|20)\d{6})\d{6,9}(?!\d)/g,'$1').replace(/[_\-\s]+$/,'');}
 async function loadFile(f){
   if(busy)return;
   releaseFile();outBlob=null;resetCounters();ui('loading');
-  fileName=f.name.replace(/\.[^.]+$/,'')||'recording';
+  fileName=cleanName(f.name.replace(/\.[^.]+$/,''))||'recording';
   $('dropText').textContent=f.name;$('drop').classList.add('has');
   $('fileCard').hidden=false;
   ['iDur','iRes','iAud'].forEach(i=>$(i).textContent='...');$('iSize').textContent=fmtSize(f.size);
@@ -752,14 +786,48 @@ window.addEventListener('beforeunload',e=>{if(busy){e.preventDefault();e.returnV
 ui('empty');
 
 /* ---------- conversion ---------- */
+/* Exact 2x enlargement (Catmull-Rom, 4 taps) that only recomputes the part of the picture that changed.
+   Weights are in 1/256: output 2i uses [-6,58,222,-18] on pixels i-2..i+1, output 2i+1 uses [-18,222,58,-6] on i-1..i+2. */
+function up2Region(src,mid,out,ew,eh,x0,y0,x1,y1){
+  const ow=ew*2;
+  const cl=(v)=>v<0?0:v>255?255:v;
+  // pass 1: horizontal, only the rows that changed
+  for(let r=y0;r<y1;r++){
+    const so=r*ew,mo=r*ow;
+    for(let i=x0;i<x1;i++){
+      const i0=i>1?i-2:0,i1=i>0?i-1:0,i3=i+1<ew?i+1:ew-1,i4=i+2<ew?i+2:ew-1;
+      const p0=src[so+i0],p1=src[so+i1],p2=src[so+i],p3=src[so+i3],p4=src[so+i4];
+      if(p0===p1&&p1===p2&&p2===p3&&p3===p4){mid[mo+2*i]=p2;mid[mo+2*i+1]=p2;continue;}
+      const r0=p0&255,r1=p1&255,r2=p2&255,r3=p3&255,r4=p4&255;
+      const g0=(p0>>8)&255,g1=(p1>>8)&255,g2=(p2>>8)&255,g3=(p3>>8)&255,g4=(p4>>8)&255;
+      const b0=(p0>>16)&255,b1=(p1>>16)&255,b2=(p2>>16)&255,b3=(p3>>16)&255,b4=(p4>>16)&255;
+      mid[mo+2*i]=0xFF000000|cl((-6*b0+58*b1+222*b2-18*b3+128)>>8)<<16|cl((-6*g0+58*g1+222*g2-18*g3+128)>>8)<<8|cl((-6*r0+58*r1+222*r2-18*r3+128)>>8);
+      mid[mo+2*i+1]=0xFF000000|cl((-18*b1+222*b2+58*b3-6*b4+128)>>8)<<16|cl((-18*g1+222*g2+58*g3-6*g4+128)>>8)<<8|cl((-18*r1+222*r2+58*r3-6*r4+128)>>8);
+    }
+  }
+  // pass 2: vertical, the changed rows plus two either side (each output row reads five source rows)
+  const c0=2*x0,c1=2*x1,ja=Math.max(0,y0-2),jb=Math.min(eh,y1+2);
+  for(let j=ja;j<jb;j++){
+    const j0=(j>1?j-2:0)*ow,j1=(j>0?j-1:0)*ow,j2=j*ow,j3=(j+1<eh?j+1:eh-1)*ow,j4=(j+2<eh?j+2:eh-1)*ow;
+    const oa=2*j*ow,ob=(2*j+1)*ow;
+    for(let x=c0;x<c1;x++){
+      const p0=mid[j0+x],p1=mid[j1+x],p2=mid[j2+x],p3=mid[j3+x],p4=mid[j4+x];
+      if(p0===p1&&p1===p2&&p2===p3&&p3===p4){out[oa+x]=p2;out[ob+x]=p2;continue;}
+      const r0=p0&255,r1=p1&255,r2=p2&255,r3=p3&255,r4=p4&255;
+      const g0=(p0>>8)&255,g1=(p1>>8)&255,g2=(p2>>8)&255,g3=(p3>>8)&255,g4=(p4>>8)&255;
+      const b0=(p0>>16)&255,b1=(p1>>16)&255,b2=(p2>>16)&255,b3=(p3>>16)&255,b4=(p4>>16)&255;
+      out[oa+x]=0xFF000000|cl((-6*b0+58*b1+222*b2-18*b3+128)>>8)<<16|cl((-6*g0+58*g1+222*g2-18*g3+128)>>8)<<8|cl((-6*r0+58*r1+222*r2-18*r3+128)>>8);
+      out[ob+x]=0xFF000000|cl((-18*b1+222*b2+58*b3-6*b4+128)>>8)<<16|cl((-18*g1+222*g2+58*g3-6*g4+128)>>8)<<8|cl((-18*r1+222*r2+58*r3-6*r4+128)>>8);
+    }
+  }
+}
 const IS_MOBILE=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(navigator.userAgentData&&navigator.userAgentData.mobile);
-async function pickVideoConfig(ew,eh,fps,soft){
+async function pickVideoConfig(ew,eh,fps,soft,scale){
   /* returns the first supported encoder; on phones a hardware encoder is tried first, and a software encoder is kept to a smaller picture */
   const codecs=[{codec:'avc1.640034',m:'avc'},{codec:'avc1.4d0034',m:'avc'},{codec:'avc1.42003e',m:'avc'},{codec:'vp09.00.10.08',m:'vp9'}];
   const plans=[];
-  if(IS_MOBILE&&!soft)plans.push({S:2,hw:'prefer-hardware',modes:['variable'],br:7e6});
-  const swS=IS_MOBILE?(ew*eh*4>2.4e6?1.5:2):2;
-  plans.push({S:swS,hw:'prefer-software',modes:['quantizer','variable'],br:8e5});
+  if(IS_MOBILE&&!soft)plans.push({S:scale,hw:'prefer-hardware',modes:['variable'],br:3.2e6});
+  plans.push({S:scale,hw:'prefer-software',modes:['quantizer','variable'],br:8e5});
   for(const p of plans){
     const ow=Math.round(ew*p.S/2)*2,oh=Math.round(eh*p.S/2)*2;
     for(const t of codecs)for(const mode of p.modes){
@@ -768,6 +836,27 @@ async function pickVideoConfig(ew,eh,fps,soft){
     }
   }
   return null;
+}
+/* encodes a few dummy frames to learn how fast this device's encoder really is (milliseconds per frame) */
+async function timeEncoder(vc,qa,qv){
+  const w=vc.ow,h=vc.oh,N=14;let err=null;
+  const enc=new VideoEncoder({output:()=>{},error:e=>{err=e;}});
+  try{
+    enc.configure(vc.cfg);aborters.push(()=>enc.close());
+    const buf=new Uint8ClampedArray(w*h*4),b32=new Uint32Array(buf.buffer);
+    const t0=performance.now();
+    for(let k=0;k<N;k++){
+      if(cancelled)throw CANCELLED;
+      for(let y=0;y<h;y++){const row=y*w,on=((y+k*3)%12)<4;for(let x=0;x<w;x+=1)b32[row+x]=on&&((x+k*7)%40)<26?0xFF202020:0xFFFFFFFF;}
+      const f=new VideoFrame(buf,{format:'RGBA',codedWidth:w,codedHeight:h,timestamp:k*33000,duration:33000});
+      enc.encode(f,vc.mode==='quantizer'?{keyFrame:k===0,avc:{quantizer:qa},vp9:{quantizer:qv}}:{keyFrame:k===0});f.close();
+      while(enc.encodeQueueSize>6)await yieldNow();
+    }
+    await enc.flush();
+    const ms=(performance.now()-t0)/N;
+    enc.close();
+    return err?null:ms;
+  }catch(e){try{enc.close();}catch(_){}return null;}
 }
 const LZ=(()=>{const N=1024,T=6,t=new Float32Array((N+1)*T);
   const L=x=>x===0?1:Math.abs(x)<3?Math.sin(Math.PI*x)*Math.sin(Math.PI*x/3)/(Math.PI*Math.PI*x*x/3):0;
@@ -790,7 +879,7 @@ async function pickAudioConfig(ch,srcRate){
   const speech=srcRate<=16000;
   if('AudioEncoder' in window){
     for(const sr of speech?[16000,24000,32000,44100,48000]:[srcRate,48000,44100]){
-      const cfg={codec:'mp4a.40.2',sampleRate:sr,numberOfChannels:ch,bitrate:speech?64000:128000*ch/2};
+      const cfg={codec:'mp4a.40.2',sampleRate:sr,numberOfChannels:ch,bitrate:speech?40000:96000*ch/2};
       try{const s=await AudioEncoder.isConfigSupported(cfg);if(s.supported)return {js:false,cfg:s.config||cfg,sr,channels:ch};}catch(e){}
     }
   }
@@ -815,7 +904,7 @@ async function encodeAudio(src,ac,muxer,onP){
   if(ac.js)return encodeAudioJs(src,ac,muxer,onP);
   let aErr=null;
   const enc=new AudioEncoder({output:(c,m)=>muxer.addAudioChunk(c,m),error:e=>{aErr=e;}});
-  enc.configure(ac.cfg);
+  enc.configure(ac.cfg);aborters.push(()=>enc.close());
   const ch=src.chans.length,total=Math.ceil(src.len/src.rate*ac.sr),step=4096;
   for(let o=0;o<total;o+=step){
     if(cancelled)break;
@@ -863,13 +952,24 @@ document.addEventListener('visibilitychange',()=>{if(busy&&document.visibilitySt
 async function convert(){
   if(!P||busy)return;
   busy=true;cancelled=false;outBlob=null;resetCounters();ui('busy');keepAwake(true);
+  cancelP=new Promise(r=>{cancelNow=r;});aborters=[];
   let vc=null,vErr=null;
   try{
-    const fps=30,qa=20,qv=22;
+    const fps=30,qa=27,qv=36;
     const W=P.W,H=P.H,ew=W+(W&1),eh=H+(H&1);
     const pal=PAL;
-    vc=await pickVideoConfig(ew,eh,fps,forceSoft);
+    vc=await pickVideoConfig(ew,eh,fps,forceSoft,2);
     if(!vc)throw new Error('متصفحك لا يوفّر ترميز الفيديو (H.264 أو VP9). جرّب Chrome أو Edge على الحاسوب.');
+    {
+      // on a slow device the large picture would take far longer than the lecture is worth, so it steps down to 1.5x
+      const frames=P.ups.length+Math.floor(P.duration/1000)*0.5;
+      const per=await timeEncoder(vc,qa,qv);
+      if(cancelled)throw CANCELLED;
+      if(per!==null&&per*frames>Math.max(150000,P.duration*0.1)){
+        const v2=await pickVideoConfig(ew,eh,fps,forceSoft,1.5);
+        if(v2)vc=v2;
+      }
+    }
     const ow=vc.ow,oh=vc.oh,S=ow/ew;
     let audioSrc=null,audioCfg=null;
     if(P.audio){
@@ -882,33 +982,57 @@ async function convert(){
       video:{codec:vc.muxCodec,width:ow,height:oh},
       ...(audioCfg?{audio:{codec:'aac',numberOfChannels:audioCfg.channels,sampleRate:audioCfg.sr}}:{})});
     const venc=new VideoEncoder({output:(c,m)=>muxer.addVideoChunk(c,m),error:e=>{vErr=e;}});
-    venc.configure(vc.cfg);
+    venc.configure(vc.cfg);aborters.push(()=>venc.close());
 
     const fb=newFb(W,H,P.bpp);
-    const cv=document.createElement('canvas');cv.width=ew;cv.height=eh;
-    const ctx=cv.getContext('2d',{willReadFrequently:false});
-    const img=ctx.createImageData(ew,eh);new Uint32Array(img.data.buffer).fill(0xFFFFFFFF);
     view.width=ew;view.height=eh;
-    let cvOut=cv;
-    if(ow!==ew||oh!==eh){cvOut=document.createElement('canvas');cvOut.width=ow;cvOut.height=oh;}
-    const ctxOut=cvOut!==cv?cvOut.getContext('2d'):null;
-    if(ctxOut){ctxOut.imageSmoothingEnabled=true;ctxOut.imageSmoothingQuality='high';}
+    let freshFrame,showView;
+    if(ow===ew*2&&oh===eh*2){
+      // exact 2x: only the part of the picture that changed is enlarged again
+      const src=new Uint32Array(ew*eh).fill(0xFFFFFFFF),mid=new Uint32Array(ow*eh),outPx=new Uint32Array(ow*oh).fill(0xFFFFFFFF);
+      const srcBytes=new Uint8ClampedArray(src.buffer),outBytes=new Uint8ClampedArray(outPx.buffer);
+      freshFrame=(ts)=>{
+        const tc=fb instanceof Uint32Array;
+        for(let y=by0;y<by1;y++){const a=y*W,o=y*ew;for(let x=bx0;x<bx1;x++)src[o+x]=tc?fb[a+x]:pal[fb[a+x]];}
+        up2Region(src,mid,outPx,ew,eh,Math.max(0,bx0-2),by0,Math.min(ew,bx1+2),by1);
+        return new VideoFrame(outBytes,{format:'RGBA',codedWidth:ow,codedHeight:oh,timestamp:ts,duration:33000});
+      };
+      showView=()=>vctx.putImageData(new ImageData(srcBytes,ew,eh),0,0);
+    }else{
+      // any other size: the browser scales the whole picture
+      const cv=document.createElement('canvas');cv.width=ew;cv.height=eh;
+      const ctx=cv.getContext('2d');
+      const img=ctx.createImageData(ew,eh);new Uint32Array(img.data.buffer).fill(0xFFFFFFFF);
+      const cvOut=document.createElement('canvas');cvOut.width=ow;cvOut.height=oh;
+      const ctxOut=cvOut.getContext('2d');ctxOut.imageSmoothingEnabled=true;ctxOut.imageSmoothingQuality='high';
+      freshFrame=(ts)=>{
+        drawFb(cv,ctx,fb,pal,W,H,img);ctxOut.drawImage(cv,0,0,ow,oh);
+        return new VideoFrame(cvOut,{timestamp:ts,duration:33000});
+      };
+      showView=()=>vctx.drawImage(cv,0,0);
+    }
+    let bx0=0,by0=0,bx1=W,by1=H;   // changed area since the last picture
+    const resetBox=()=>{bx0=by0=1e9;bx1=by1=-1;};
 
     const endMs=P.duration+500,beat=1000;
     let vP=0,aP=0,aErr=null;
     const base=audioSrc?ENH_SHARE:0,showP=m=>setProgress(base+(1-base)*(audioSrc?0.88*vP+0.12*aP:vP),m);
     /* the audio is encoded while the video encoder works */
     const aJob=audioSrc?encodeAudio(audioSrc,audioCfg,muxer,x=>{aP=x;}).catch(e=>{aErr=e;}):null;
-    let emitted=0,lastKey=-1e9,lastT=-1,dirty=true;
+    let emitted=0,lastKey=-1e9,lastT=-1,dirty=true,lastVf=null;
     const emit=async(t)=>{
+      if(cancelled)throw CANCELLED;
       t=Math.max(t,lastT+1);lastT=t;
-      if(dirty){drawFb(cv,ctx,fb,pal,W,H,img);if(ctxOut)ctxOut.drawImage(cv,0,0,ow,oh);dirty=false;}
-      const vf=new VideoFrame(cvOut,{timestamp:Math.round(t*1000),duration:33000});
+      const ts=Math.round(t*1000);
+      let vf,fresh=false;
+      if(dirty||!lastVf){vf=freshFrame(ts);resetBox();dirty=false;fresh=true;}
+      else vf=new VideoFrame(lastVf,{timestamp:ts,duration:33000});   // nothing changed: reuse the last picture without copying it again
       const key=emitted===0||t-lastKey>=6000;
       if(key)lastKey=t;
-      venc.encode(vf,vc.mode==='quantizer'?{keyFrame:key,avc:{quantizer:qa},vp9:{quantizer:qv}}:{keyFrame:key});vf.close();
+      venc.encode(vf,vc.mode==='quantizer'?{keyFrame:key,avc:{quantizer:qa},vp9:{quantizer:qv}}:{keyFrame:key});
+      if(fresh){if(lastVf)lastVf.close();lastVf=vf;}else vf.close();
       emitted++;
-      if(emitted%12===0)vctx.drawImage(cv,0,0);
+      if(emitted%12===0)showView();
       await drain(venc,24);
     };
     // every screen update becomes a frame at its own recorded time; a frame is repeated at least once a second so seeking stays accurate
@@ -917,23 +1041,27 @@ async function convert(){
       if(cancelled)break;
       if(vErr)throw vErr;
       const t=P.ups[i].ts;
-      while(i<P.ups.length&&P.ups[i].ts<=t+40){applyUpdate(fb,W,H,P.ups[i]);i++;dirty=true;}
+      while(i<P.ups.length&&P.ups[i].ts<=t+40){
+        const u=P.ups[i];applyUpdate(fb,W,H,u);i++;dirty=true;
+        for(const r of u.rects){bx0=Math.min(bx0,r.x);by0=Math.min(by0,r.y);bx1=Math.max(bx1,Math.min(W,r.x+r.w));by1=Math.max(by1,Math.min(H,r.y+r.h));}
+      }
       while(emitted&&t-lastT>beat*1.5)await emit(lastT+beat);
       await emit(t);
-      if(i%40===0){vP=Math.min(t/endMs,1);showP('الصورة · '+fmtTime(t)+' / '+fmtTime(P.duration));await sleep(0);}
+      if(i%40===0){vP=Math.min(t/endMs,1);showP('الصورة : '+fmtTime(t)+' / '+fmtTime(P.duration));await sleep(0);}
     }
+    if(cancelled)throw CANCELLED;
     await emit(endMs);
     vP=1;showP(WAIT);
-    vctx.drawImage(cv,0,0);
-    await venc.flush();venc.close();
+    showView();
+    await venc.flush();venc.close();if(lastVf){lastVf.close();lastVf=null;}
     if(vErr)throw vErr;
-    if(cancelled){if(aJob)await aJob;throw new Error('أُلغي التحويل.');}
+    if(cancelled)throw CANCELLED;
 
     if(aJob){
       vP=1;showP(WAIT);
       await aJob;
       if(aErr)throw aErr;
-      if(cancelled)throw new Error('أُلغي التحويل.');
+      if(cancelled)throw CANCELLED;
     }
     showP(WAIT);await yieldNow();
     muxer.finalize();
@@ -946,6 +1074,7 @@ async function convert(){
     ui('done');
     $('outSize').textContent=size;
   }catch(e){
+    if(cancelled){busy=false;outBlob=null;setProgress(0,'');ui(P?'ready':'empty');return;}
     if(vc&&vc.hw&&vErr&&!cancelled){busy=false;keepAwake(false);forceSoft=true;return await convert();}
     busy=false;outBlob=null;
     $('convErr').textContent=e.message||String(e);$('convErr').hidden=false;
@@ -956,7 +1085,15 @@ async function convert(){
   }
 }
 $('go').addEventListener('click',convert);
-$('cancel').addEventListener('click',()=>{cancelled=true;});
+$('cancel').addEventListener('click',()=>{
+  if(!busy||cancelled)return;
+  cancelled=true;
+  if(cancelNow)cancelNow();
+  for(const f of aborters){try{f();}catch(e){}}
+  aborters=[];
+  // the screen answers at once; the work behind it unwinds within a moment
+  $('prog').hidden=true;$('cancel').hidden=true;
+});
 
 /* ---------- saving: a normal browser download; inside claude.ai the viewer confirms through the downloads capability ---------- */
 $('save').addEventListener('click',async()=>{
